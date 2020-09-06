@@ -9,11 +9,11 @@ export const locationSearch = (text) => ({
   payload: text,
 });
 
-export const fetchPosts = (test) => (dispatch) => {
-  console.log(test);
+export const fetchPosts = (what, job) => (dispatch) => {
+  console.log(what, job);
   dispatch({ type: REQUESTS.FETCH_POSTS_PENDING });
   fetch(
-    "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location=sf"
+    `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location=${what}&description=${job}`
   )
     .then((resp) => resp.json())
     .then((data) =>
